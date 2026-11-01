@@ -1,4 +1,0 @@
-# Managed by chezmoi (personal profile).
-# Plannotator: serve on the tailnet name so plans open from other devices.
-export PLANNOTATOR_REMOTE=1
-export PLANNOTATOR_PORT=19432-19441

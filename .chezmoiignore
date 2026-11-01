@@ -6,7 +6,6 @@ ci
 .ssh
 .p10k.zsh
 .zprofile
-.zshenv
 .tmux/scripts
 .config/zsh
 .oh-my-zsh
