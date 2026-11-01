@@ -1,92 +1,93 @@
-# Package lists for the personal profile on macOS. DRAFT: prune before first install (A4).
-# Suggested drops are commented out with a reason.
+# Package lists for the personal profile on macOS.
+# Pre-pruned 2026-11-01 from a year of zsh history and Claude Code Bash calls on both Macs.
+# Uncomment a line to bring a port back.
 ports:
-  - act
-  - argocd
-  - asciinema
-  - aws-iam-authenticator
-  - azure-cli
+  # - act   # unused since 2025-11 in shell or agent history
+  # - argocd   # unused since 2025-11 in shell or agent history
+  # - asciinema   # unused since 2025-11 in shell or agent history
+  # - aws-iam-authenticator   # unused since 2025-11 in shell or agent history
+  # - azure-cli   # unused since 2025-11 in shell or agent history
   - bat
-  - bat-extras
+  # - bat-extras   # unused since 2025-11 in shell or agent history
   - ctags
   - curl
   - diff-so-fancy
   - doctl
-  - dos2unix
-  - eksctl
-  - elixir
-  - erlang
+  # - dos2unix   # unused since 2025-11 in shell or agent history
+  # - eksctl   # unused since 2025-11 in shell or agent history
+  # - elixir   # unused since 2025-11 in shell or agent history
+  # - erlang   # unused since 2025-11 in shell or agent history
   # - exa   # unmaintained, replaced by eza
   - eza
   - fd
   - ffmpeg
-  - figlet
-  - fswatch
+  # - figlet   # unused since 2025-11 in shell or agent history
+  # - fswatch   # unused since 2025-11 in shell or agent history
   - fzf
   - gh
   - git
-  - go
-  - gradle
+  # - go   # unused since 2025-11 in shell or agent history
+  # - gradle   # unused since 2025-11 in shell or agent history
   - graphviz
   - grep
   - helm
   - htop
   - inetutils
-  - infracost
-  - istioctl
+  # - infracost   # unused since 2025-11 in shell or agent history
+  # - istioctl   # unused since 2025-11 in shell or agent history
   - jq
-  - k6
+  # - k6   # unused since 2025-11 in shell or agent history
   - k9s
-  - kcat
-  - kompose
+  # - kcat   # unused since 2025-11 in shell or agent history
+  # - kompose   # unused since 2025-11 in shell or agent history
   - kubectl
-  - kubeseal
-  - kustomize
+  # - kubeseal   # unused since 2025-11 in shell or agent history
+  # - kustomize   # unused since 2025-11 in shell or agent history
   # - mackup   # replaced by chezmoi
   - mas
-  - maven3
-  - mingw-w64
-  - neofetch
+  # - maven3   # unused since 2025-11 in shell or agent history
+  # - mingw-w64   # unused since 2025-11 in shell or agent history
+  # - neofetch   # unused since 2025-11 in shell or agent history
   - neovim
   - nmap
   # - nodejs14   # EOL since 2023
   - nodejs24
   # - nvm   # replaced by fnm
-  - openjdk11
+  # - openjdk11   # unused since 2025-11 in shell or agent history
   - p7zip
   - pandoc
-  - php
-  - pipenv
-  - plantuml
-  - poetry
+  # - php   # unused since 2025-11 in shell or agent history
+  # - pipenv   # unused since 2025-11 in shell or agent history
+  # - plantuml   # unused since 2025-11 in shell or agent history
+  # - poetry   # unused since 2025-11 in shell or agent history
   - postgresql14
   - pre-commit
-  - protobuf
+  # - protobuf   # unused since 2025-11 in shell or agent history
   - py313-awscli2
-  - py313-virtualenv
+  # - py313-virtualenv   # unused since 2025-11 in shell or agent history
   - rbenv
   - ripgrep
-  - ruby
+  # - ruby   # unused since 2025-11 in shell or agent history
   - ruby-build
-  - ruff
+  # - ruff   # unused since 2025-11 in shell or agent history
   - shellcheck
-  - srt
-  - stern
-  - tealdeer
+  # - srt   # unused since 2025-11 in shell or agent history
+  # - stern   # unused since 2025-11 in shell or agent history
+  # - tealdeer   # unused since 2025-11 in shell or agent history
   - terraform
-  - terraform-docs
+  # - terraform-docs   # unused since 2025-11 in shell or agent history
   - terraform-ls
-  - terragrunt
-  - tesseract
-  - tflint
+  # - terragrunt   # unused since 2025-11 in shell or agent history
+  # - tesseract   # unused since 2025-11 in shell or agent history
+  # - tflint   # unused since 2025-11 in shell or agent history
   - the_silver_searcher
   - thefuck
   - tmux
-  - watch
+  # - watch   # unused since 2025-11 in shell or agent history
   - wget
-  - wrk
+  # - wrk   # unused since 2025-11 in shell or agent history
   # - youtube-dl   # unmaintained, use yt-dlp
-  - yt-dlp
+  # - yt-dlp   # unused since 2025-11 in shell or agent history
   # - z   # oh-my-zsh z plugin covers it
   - zsh
   - fnm
