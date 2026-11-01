@@ -1,0 +1,15 @@
+#!/bin/sh
+# Undo a sporadic install: delete managed files, restore the host's originals, remove chezmoi itself.
+set -eu
+b="$HOME/.local/share/dotfiles-backup"
+for f in {{ includeTemplate "sporadic-files" . | splitList "\n" | compact | join " " }}; do
+  rm -f "$HOME/$f"
+  if [ -e "$b/$f" ]; then mv "$b/$f" "$HOME/$f"; fi
+done
+rm -rf "$b" "$HOME/.config/shell"
+rmdir "$HOME/.config/git" 2>/dev/null || true
+"$HOME/.local/bin/chezmoi" purge --binary --force
+rm -f "$HOME/.local/bin/dotfiles-remove"
+# Directories the install created, only if nothing else lives there
+rmdir "$HOME/.local/bin" "$HOME/.local/share" "$HOME/.local/state" "$HOME/.local" "$HOME/.config" 2>/dev/null || true
+echo "dotfiles removed"

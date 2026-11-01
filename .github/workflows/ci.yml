@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Install base tools in container
         if: matrix.container != ''
-        run: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git zsh
+        run: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git zsh rsync
       - name: Install zsh on runner
         if: matrix.container == ''
         run: sudo apt-get update && sudo apt-get install -y zsh
@@ -45,6 +45,8 @@ jobs:
           grep -q 'profile = "sporadic"' "$HOME/.config/chezmoi/chezmoi.toml"
           test ! -e "$HOME/.ssh/config"
       - run: ci/check-shell.sh bash zsh
+      - name: Install then remove leaves HOME unchanged
+        run: PATH="$HOME/.local/bin:$PATH" ci/check-roundtrip.sh
 
   personal-macos:
     runs-on: macos-latest

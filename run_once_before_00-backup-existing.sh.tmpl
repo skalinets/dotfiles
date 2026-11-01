@@ -1,0 +1,13 @@
+{{ if eq .profile "sporadic" -}}
+#!/bin/sh
+# Keep the host's own copies of files chezmoi is about to overwrite; dotfiles-remove puts them back.
+set -eu
+b="$HOME/.local/share/dotfiles-backup"
+mkdir -p "$b"
+for f in {{ includeTemplate "sporadic-files" . | splitList "\n" | compact | join " " }}; do
+  if [ -e "$HOME/$f" ] && [ ! -e "$b/$f" ]; then
+    mkdir -p "$(dirname "$b/$f")"
+    cp -p "$HOME/$f" "$b/$f"
+  fi
+done
+{{ end -}}

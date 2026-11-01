@@ -1,0 +1,8 @@
+.bashrc
+.zshrc
+.zshenv
+.gitconfig
+.tmux.conf
+.vimrc
+.config/git/ignore
+.config/shell/portable.sh

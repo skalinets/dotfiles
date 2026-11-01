@@ -6,10 +6,13 @@ ci
 .ssh
 .p10k.zsh
 .zprofile
-.tmux/scripts
+.tmux
 .config/zsh
 .oh-my-zsh
-.tmux/plugins
+{{ end }}
+
+{{ if ne .profile "sporadic" }}
+.local/bin/dotfiles-remove
 {{ end }}
 
 {{ if ne .chezmoi.os "darwin" }}

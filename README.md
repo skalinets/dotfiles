@@ -19,10 +19,10 @@ Sporadic, user space only:
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply --force --promptChoice profile=sporadic skalinets
 ```
 
-Remove it again:
+Remove it again. This restores the host's original files and deletes chezmoi:
 
 ```sh
-~/.local/bin/chezmoi purge --binary --force
+~/.local/bin/dotfiles-remove
 ```
 
 Personal Mac (needs Xcode Command Line Tools and SSH keys for the private nvim repo):
