@@ -25,6 +25,7 @@ ports:
   # - fswatch   # unused since 2025-11 in shell or agent history
   - fzf
   - gh
+  - glab
   - git
   # - go   # unused since 2025-11 in shell or agent history
   # - gradle   # unused since 2025-11 in shell or agent history

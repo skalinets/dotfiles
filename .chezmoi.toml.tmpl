@@ -1,15 +1,19 @@
 {{- /* Asked once. Without a TTY (CI, piped install) the profile defaults to sporadic. */ -}}
 {{- $profile := "sporadic" -}}
 {{- $agentsRepo := "" -}}
+{{- $nvimRepo := "" -}}
 {{- if stdinIsATTY -}}
 {{-   $profile = promptChoiceOnce . "profile" "Profile" (list "personal" "sporadic") "sporadic" -}}
 {{-   if eq $profile "personal" -}}
 {{-     $agentsRepo = promptStringOnce . "agentsRepo" "agent-config git URL (empty to skip)" -}}
+{{-     $nvimRepo = promptStringOnce . "nvimRepo" "nvim config git URL (empty to skip)" -}}
 {{-   end -}}
 {{- else -}}
 {{-   if hasKey . "profile" }}{{ $profile = .profile }}{{ end -}}
 {{-   if hasKey . "agentsRepo" }}{{ $agentsRepo = .agentsRepo }}{{ end -}}
+{{-   if hasKey . "nvimRepo" }}{{ $nvimRepo = .nvimRepo }}{{ end -}}
 {{- end -}}
 [data]
     profile = {{ $profile | quote }}
     agentsRepo = {{ $agentsRepo | quote }}
+    nvimRepo = {{ $nvimRepo | quote }}

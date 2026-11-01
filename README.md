@@ -25,13 +25,13 @@ Remove it again. This restores the host's original files and deletes chezmoi:
 ~/.local/bin/dotfiles-remove
 ```
 
-Personal Mac (needs Xcode Command Line Tools and SSH keys for the private nvim repo):
+Personal Mac (needs Xcode Command Line Tools; init asks for the private nvim and agent-config repo URLs, empty skips):
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply skalinets
 ```
 
-This installs MacPorts, the ports and App Store apps in `.chezmoidata/packages.yaml`, clones the nvim config and, when a URL is given at init, `~/.agents`. GUI apps are listed in [APPS.md](APPS.md) and installed by hand.
+This installs MacPorts, the ports and App Store apps in `.chezmoidata/packages.yaml`, and clones the nvim config and `~/.agents` when their URLs were given at init. GUI apps are listed in [APPS.md](APPS.md) and installed by hand.
 
 ## Daily use
 

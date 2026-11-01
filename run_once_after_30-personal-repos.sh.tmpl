@@ -1,9 +1,11 @@
 {{ if eq .profile "personal" -}}
 #!/bin/bash
-# Private repos, cloned over SSH. Needs the SSH keys in place first.
+# Private repos. Each URL is asked once at init; an empty answer skips that repo.
 set -euo pipefail
 
-[ -d ~/.config/nvim ] || git clone git@github.com:skalinets/astrovim-config.git ~/.config/nvim
+{{ if .nvimRepo -}}
+[ -d ~/.config/nvim ] || git clone {{ .nvimRepo | quote }} ~/.config/nvim
+{{- end }}
 
 {{ if .agentsRepo -}}
 if [ ! -d ~/.agents ]; then
