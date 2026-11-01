@@ -1,0 +1,61 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: gitleaks
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.21.2 git /repo --redact --exit-code 1
+
+  private-info:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ci/check-private.sh
+
+  sporadic:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            container: ""
+          - os: ubuntu-latest
+            container: debian:stable
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+    steps:
+      - name: Install base tools in container
+        if: matrix.container != ''
+        run: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl git zsh
+      - name: Install zsh on runner
+        if: matrix.container == ''
+        run: sudo apt-get update && sudo apt-get install -y zsh
+      - uses: actions/checkout@v4
+      - name: Apply sporadic profile
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          "$HOME/.local/bin/chezmoi" init --apply --force --source "$GITHUB_WORKSPACE" </dev/null
+          grep -q 'profile = "sporadic"' "$HOME/.config/chezmoi/chezmoi.toml"
+          test ! -e "$HOME/.ssh/config"
+      - run: ci/check-shell.sh bash zsh
+
+  personal-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply personal profile without install scripts
+        run: |
+          brew install chezmoi
+          mkdir -p "$HOME/.config/chezmoi"
+          printf '[data]\n    profile = "personal"\n    agentsRepo = ""\n' > "$HOME/.config/chezmoi/chezmoi.toml"
+          chezmoi apply --force --source "$GITHUB_WORKSPACE" --exclude scripts </dev/null
+          test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
+          chezmoi execute-template --source "$GITHUB_WORKSPACE" < "$GITHUB_WORKSPACE/run_onchange_after_20-packages.sh.tmpl" | bash -n
+      - run: ci/check-shell.sh zsh bash

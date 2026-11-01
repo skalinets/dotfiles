@@ -1,0 +1,56 @@
+# Managed by chezmoi. Machine-specific settings (identity overrides, private hosts) go in ~/.gitconfig.local.
+[user]
+	name = Serhii Kalinets
+	email = kalinets@gmail.com
+[core]
+	eol = lf
+	autocrlf = false
+{{- if eq .profile "personal" }}
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+{{- end }}
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	pr = pull
+{{- if eq .profile "personal" }}
+	ship = "\\!bash -c 'git diff --quiet && git diff --cached --quiet && [ -z \"$(git ls-files --others --exclude-standard)\" ] && echo \"Nothing to ship.\" && exit 0; git add -A; MSG=$(curl -s --max-time 5 https://whatthecommit.com/index.txt 2>/dev/null); [ -z \"$MSG\" ] && MSG=\"ship it\"; git commit -m \"$MSG\" && git push && echo \"\" && echo \"Shipped: $MSG\"'"
+{{- end }}
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+{{- if eq .profile "personal" }}
+[diff]
+	tool = vimdiff
+[merge]
+	tool = diffconflicts
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[http]
+	postBuffer = 524288000
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
+{{- end }}
+[include]
+	path = ~/.gitconfig.local

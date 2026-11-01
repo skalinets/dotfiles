@@ -1,0 +1,15 @@
+{{ if and (eq .profile "personal") (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+# Reruns whenever .chezmoidata/packages.yaml changes.
+# packages hash: {{ include ".chezmoidata/packages.yaml" | sha256sum }}
+set -euo pipefail
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+sudo port -N install{{ range .ports }} {{ . }}{{ end }}
+
+if command -v mas >/dev/null 2>&1; then
+{{- range .mas }}
+  mas list | grep -q '^{{ .id }} ' || mas install {{ .id }}  # {{ .name }}
+{{- end }}
+fi
+{{ end -}}

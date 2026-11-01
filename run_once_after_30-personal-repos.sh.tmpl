@@ -1,0 +1,14 @@
+{{ if eq .profile "personal" -}}
+#!/bin/bash
+# Private repos, cloned over SSH. Needs the SSH keys in place first.
+set -euo pipefail
+
+[ -d ~/.config/nvim ] || git clone git@github.com:skalinets/astrovim-config.git ~/.config/nvim
+
+{{ if .agentsRepo -}}
+if [ ! -d ~/.agents ]; then
+  git clone {{ .agentsRepo | quote }} ~/.agents
+  ~/.agents/bin/agentcfg link
+fi
+{{- end }}
+{{ end -}}

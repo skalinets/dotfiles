@@ -1,0 +1,15 @@
+# Managed by chezmoi (personal profile). Machine-specific settings go in ~/.zshrc.local.
+{{ if eq .chezmoi.os "darwin" -}}
+# MacPorts first. Homebrew stays as a fallback until the migration finishes on every Mac.
+if [ -d /opt/local/bin ]; then
+  export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+  export MANPATH="/opt/local/share/man:$MANPATH"
+elif [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+[ -d /Applications/Obsidian.app ] && export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+{{- end }}

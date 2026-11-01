@@ -1,0 +1,104 @@
+# Package lists for the personal profile on macOS. DRAFT: prune before first install (A4).
+# Suggested drops are commented out with a reason.
+ports:
+  - act
+  - argocd
+  - asciinema
+  - aws-iam-authenticator
+  - azure-cli
+  - bat
+  - bat-extras
+  - ctags
+  - curl
+  - diff-so-fancy
+  - doctl
+  - dos2unix
+  - eksctl
+  - elixir
+  - erlang
+  # - exa   # unmaintained, replaced by eza
+  - eza
+  - fd
+  - ffmpeg
+  - figlet
+  - fswatch
+  - fzf
+  - gh
+  - git
+  - go
+  - gradle
+  - graphviz
+  - grep
+  - helm
+  - htop
+  - inetutils
+  - infracost
+  - istioctl
+  - jq
+  - k6
+  - k9s
+  - kcat
+  - kompose
+  - kubectl
+  - kubeseal
+  - kustomize
+  # - mackup   # replaced by chezmoi
+  - mas
+  - maven3
+  - mingw-w64
+  - neofetch
+  - neovim
+  - nmap
+  # - nodejs14   # EOL since 2023
+  - nodejs24
+  # - nvm   # replaced by fnm
+  - openjdk11
+  - p7zip
+  - pandoc
+  - php
+  - pipenv
+  - plantuml
+  - poetry
+  - postgresql14
+  - pre-commit
+  - protobuf
+  - py313-awscli2
+  - py313-virtualenv
+  - rbenv
+  - ripgrep
+  - ruby
+  - ruby-build
+  - ruff
+  - shellcheck
+  - srt
+  - stern
+  - tealdeer
+  - terraform
+  - terraform-docs
+  - terraform-ls
+  - terragrunt
+  - tesseract
+  - tflint
+  - the_silver_searcher
+  - thefuck
+  - tmux
+  - watch
+  - wget
+  - wrk
+  # - youtube-dl   # unmaintained, use yt-dlp
+  - yt-dlp
+  # - z   # oh-my-zsh z plugin covers it
+  - zsh
+  - fnm
+  - chezmoi
+  - coreutils
+mas:
+  - { id: 1091189122, name: "Bear" }
+  - { id: 682658836, name: "GarageBand" }
+  - { id: 1460836908, name: "GoPro Player" }
+  - { id: 408981434, name: "iMovie" }
+  - { id: 409183694, name: "Keynote" }
+  - { id: 409203825, name: "Numbers" }
+  - { id: 409201541, name: "Pages" }
+  - { id: 904280696, name: "Things" }
+  - { id: 497799835, name: "Xcode" }

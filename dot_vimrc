@@ -1,0 +1,12 @@
+" Managed by chezmoi. Minimal config for machines without nvim.
+set nocompatible
+syntax on
+filetype plugin indent on
+set number relativenumber
+set expandtab shiftwidth=2 tabstop=2
+set ignorecase smartcase incsearch hlsearch
+set backspace=indent,eol,start
+set hidden
+set mouse=a
+set scrolloff=5
+set encoding=utf-8

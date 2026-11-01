@@ -1,0 +1,20 @@
+# Managed by chezmoi. Machine-specific settings go in ~/.bashrc.local.
+case $- in *i*) ;; *) return ;; esac
+
+HISTCONTROL=ignoreboth
+HISTSIZE=10000
+HISTFILESIZE=20000
+shopt -s histappend checkwinsize
+
+[ -f ~/.config/shell/portable.sh ] && . ~/.config/shell/portable.sh
+
+if [ -n "$SSH_CONNECTION" ]; then _host_color=33; else _host_color=32; fi
+PS1="\[\033[01;${_host_color}m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+unset _host_color
+PROMPT_COMMAND="_reset_mouse${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then . /etc/bash_completion
+fi
+
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local

@@ -1,0 +1,14 @@
+# Managed by chezmoi. Host entries live in ~/.ssh/config.local, which is never committed.
+Include ~/.ssh/config.local
+{{- if and (eq .profile "personal") (eq .chezmoi.os "darwin") }}
+Include ~/.orbstack/ssh/config
+{{- end }}
+
+Host *
+  IdentitiesOnly yes
+  ServerAliveInterval 30
+  ServerAliveCountMax 6
+  TCPKeepAlive no
+  GSSAPIAuthentication no
+  SetEnv LANG=en_US.UTF-8
+  SendEnv -LC_*
