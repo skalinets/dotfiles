@@ -3,12 +3,18 @@
 # Uncomment a line to bring a port back.
 ports:
   # - act   # unused since 2025-11 in shell or agent history
+  - apktool
   # - argocd   # unused since 2025-11 in shell or agent history
   # - asciinema   # unused since 2025-11 in shell or agent history
   # - aws-iam-authenticator   # unused since 2025-11 in shell or agent history
   # - azure-cli   # unused since 2025-11 in shell or agent history
   - bat
   # - bat-extras   # unused since 2025-11 in shell or agent history
+  - bison
+  - btop
+  - cloudflared
+  - cmake
+  - colima
   - ctags
   - curl
   - diff-so-fancy
@@ -24,15 +30,21 @@ ports:
   - ffmpeg
   # - figlet   # unused since 2025-11 in shell or agent history
   # - fswatch   # unused since 2025-11 in shell or agent history
+  - fvm
   - fzf
   - gh
   - glab
   - git
+  - git-filter-repo
+  - git-lfs
+  - gitlab-runner
   # - go   # unused since 2025-11 in shell or agent history
   # - gradle   # unused since 2025-11 in shell or agent history
   - graphviz
   - grep
   - helm
+  - help2man
+  - herdr
   - htop
   - inetutils
   # - infracost   # unused since 2025-11 in shell or agent history
@@ -48,6 +60,8 @@ ports:
   # - mackup   # replaced by chezmoi
   # - mas   # port mas @7.0.0 needs Xcode 26; this Mac has 16.2 (2026-11-02)
   # - maven3   # unused since 2025-11 in shell or agent history
+  - meson
+  - mole
   - mosh
   # - mingw-w64   # unused since 2025-11 in shell or agent history
   # - neofetch   # unused since 2025-11 in shell or agent history
@@ -55,6 +69,7 @@ ports:
   - nmap
   # - nodejs14   # EOL since 2023
   # - nodejs24   # fnm installs Node from official binaries; the port is a source V8 build (2026-11-02)
+  - node_exporter
   # - nvm   # replaced by fnm
   # - openjdk11   # unused since 2025-11 in shell or agent history
   - p7zip
@@ -63,12 +78,14 @@ ports:
   # - pipenv   # unused since 2025-11 in shell or agent history
   # - plantuml   # unused since 2025-11 in shell or agent history
   # - poetry   # unused since 2025-11 in shell or agent history
+  - poppler
   - postgresql14
   - pre-commit
   # - protobuf   # unused since 2025-11 in shell or agent history
   - py313-awscli2
   # - py313-virtualenv   # unused since 2025-11 in shell or agent history
   - rbenv
+  - rclone
   - ripgrep
   # - ruby   # unused since 2025-11 in shell or agent history
   - ruby-build
@@ -81,7 +98,7 @@ ports:
   # - terraform-docs   # unused since 2025-11 in shell or agent history
   - terraform-ls
   # - terragrunt   # unused since 2025-11 in shell or agent history
-  # - tesseract   # unused since 2025-11 in shell or agent history
+  - tesseract
   # - tflint   # unused since 2025-11 in shell or agent history
   - the_silver_searcher
   - thefuck
@@ -90,6 +107,7 @@ ports:
   # - watch   # unused since 2025-11 in shell or agent history
   - wget
   # - wrk   # unused since 2025-11 in shell or agent history
+  - yazi
   # - youtube-dl   # unmaintained, use yt-dlp
   # - yt-dlp   # unused since 2025-11 in shell or agent history
   # - z   # oh-my-zsh z plugin covers it
