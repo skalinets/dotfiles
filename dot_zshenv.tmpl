@@ -3,6 +3,17 @@
 skip_global_compinit=1
 {{- if eq .profile "personal" }}
 
+{{- if eq .chezmoi.os "darwin" }}
+# `ssh host command` runs a non-login, non-interactive zsh, which reads only
+# this file, so the PATH from ~/.zprofile is absent. mosh starts mosh-server
+# that way, and MacPorts is not in /etc/paths, so without this an incoming
+# mosh connection fails with "mosh-server: command not found".
+case ":$PATH:" in
+  *":/opt/local/bin:"*) ;;
+  *) [ -d /opt/local/bin ] && export PATH="/opt/local/bin:/opt/local/sbin:$PATH" ;;
+esac
+{{- end }}
+
 # Plannotator: serve on the tailnet name so plans open from other devices.
 export PLANNOTATOR_REMOTE=1
 export PLANNOTATOR_PORT=19432-19441
