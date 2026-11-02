@@ -85,6 +85,7 @@ ports:
   - the_silver_searcher
   - thefuck
   - tmux
+  - uv
   # - watch   # unused since 2025-11 in shell or agent history
   - wget
   # - wrk   # unused since 2025-11 in shell or agent history

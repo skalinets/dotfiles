@@ -46,9 +46,6 @@ zstyle ':completion:*' menu select
 (( $+commands[nvim] )) && alias vim=nvim vi=nvim
 
 # Language toolchains, each only when installed
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-_cache_eval pyenv pyenv init - --no-rehash
 _cache_eval rbenv rbenv init - --no-rehash
 _cache_eval fnm fnm env --use-on-cd --shell zsh
 _cache_eval thefuck thefuck --alias
@@ -57,13 +54,14 @@ export THEFUCK_PRIORITY="git_hook_bypass=1100"
 [[ -f ~/.local/bin/env ]] && source ~/.local/bin/env
 export BUN_INSTALL="$HOME/.bun"
 export PNPM_HOME="$HOME/Library/pnpm"
-for _p in $HOME/.cargo/bin $HOME/.local/share/bob/nvim-bin $HOME/.pub-cache/bin $BUN_INSTALL/bin $PNPM_HOME; do
+export DOTNET_ROOT="$HOME/.dotnet"
+for _p in $HOME/.cargo/bin $HOME/.local/share/bob/nvim-bin $HOME/.pub-cache/bin $BUN_INSTALL/bin $PNPM_HOME $HOME/.dotnet; do
   [[ -d $_p ]] && path+=($_p)
 done
 unset _p
 
 for _gc in /opt/local/libexec/google-cloud-sdk /opt/homebrew/share/google-cloud-sdk; do
-  if [[ -f $_gc/path.zsh.inc ]]; then source $_gc/path.zsh.inc; source $_gc/completion.zsh.inc; break; fi
+  if [[ -f $_gc/completion.zsh.inc ]]; then [[ -f $_gc/path.zsh.inc ]] && source $_gc/path.zsh.inc; source $_gc/completion.zsh.inc; break; fi
 done
 unset _gc
 
