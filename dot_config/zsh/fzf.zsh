@@ -1,5 +1,5 @@
 # fzf key bindings and completion (fzf >= 0.48)
-(( $+commands[fzf] )) && [[ -t 0 ]] && source <(fzf --zsh)
+(( $+commands[fzf] )) && [[ -n $TTY ]] && source <(fzf --zsh)  # TTY is empty without a terminal; p10k instant prompt hides stdin
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
 
