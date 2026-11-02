@@ -1,0 +1,25 @@
+{{ if and (eq .profile "personal") (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+# Claim the unversioned command names for MacPorts ports that gate them behind
+# `port select`. Without this, `aws` and `helm` do not exist and `terraform`,
+# `kubectl` and `psql` resolve to the Homebrew copies in /usr/local/bin.
+# Python is deliberately absent: uv manages Python toolchains.
+set -euo pipefail
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+# Each group offers one versioned option plus "none", and the version moves as
+# ports update, so take whichever option is not "none" rather than pinning it.
+select_set() {
+  local group=$1 current choice
+  current=$(port select --show "$group" 2>/dev/null | sed -n "s/.*is '\(.*\)'\.\$/\1/p")
+  choice=$(port -q select --list "$group" 2>/dev/null | tr ' \t' '\n\n' |
+    awk 'NF && $1 != "none" && $1 != "(active)"' | head -1)
+  [ -n "$choice" ] || return 0
+  [ "$current" = "$choice" ] && return 0
+  sudo port select --set "$group" "$choice"
+}
+
+for group in awscli helm kubectl terraform postgresql; do
+  select_set "$group"
+done
+{{ end -}}

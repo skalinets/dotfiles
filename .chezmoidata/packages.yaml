@@ -46,14 +46,15 @@ ports:
   # - kubeseal   # unused since 2025-11 in shell or agent history
   # - kustomize   # unused since 2025-11 in shell or agent history
   # - mackup   # replaced by chezmoi
-  - mas
+  # - mas   # port mas @7.0.0 needs Xcode 26; this Mac has 16.2 (2026-11-02)
   # - maven3   # unused since 2025-11 in shell or agent history
+  - mosh
   # - mingw-w64   # unused since 2025-11 in shell or agent history
   # - neofetch   # unused since 2025-11 in shell or agent history
   - neovim
   - nmap
   # - nodejs14   # EOL since 2023
-  - nodejs24
+  # - nodejs24   # fnm installs Node from official binaries; the port is a source V8 build (2026-11-02)
   # - nvm   # replaced by fnm
   # - openjdk11   # unused since 2025-11 in shell or agent history
   - p7zip
