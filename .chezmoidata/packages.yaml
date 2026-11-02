@@ -61,7 +61,7 @@ ports:
   # - mas   # port mas @7.0.0 needs Xcode 26; this Mac has 16.2 (2026-11-02)
   # - maven3   # unused since 2025-11 in shell or agent history
   - meson
-  - mole
+  # - mole  # MacPorts mole is davrodpin/mole (ssh tunnels) and fails to build with go 1.27. The Homebrew mole was the mole.fit Mac cleaner, which has no port.
   - mosh
   # - mingw-w64   # unused since 2025-11 in shell or agent history
   # - neofetch   # unused since 2025-11 in shell or agent history
