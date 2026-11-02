@@ -16,6 +16,7 @@ ports:
   # - dos2unix   # unused since 2025-11 in shell or agent history
   # - eksctl   # unused since 2025-11 in shell or agent history
   # - elixir   # unused since 2025-11 in shell or agent history
+  - entr   # tmux-autoreload watches config files with it
   # - erlang   # unused since 2025-11 in shell or agent history
   # - exa   # unmaintained, replaced by eza
   - eza
