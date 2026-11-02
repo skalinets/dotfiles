@@ -7,3 +7,8 @@ skip_global_compinit=1
 export PLANNOTATOR_REMOTE=1
 export PLANNOTATOR_PORT=19432-19441
 {{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+
+# Non-interactive ssh (mosh, scp, rsync) reads only this file. Put MacPorts on PATH so mosh-server is found.
+[[ -d /opt/local/bin ]] && path=(/opt/local/bin /opt/local/sbin $path)
+{{- end }}
