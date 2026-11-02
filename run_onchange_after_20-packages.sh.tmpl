@@ -9,7 +9,7 @@ sudo port -N install{{ range .ports }} {{ . }}{{ end }}
 
 if command -v mas >/dev/null 2>&1; then
 {{- range .mas }}
-  mas list | grep -q '^{{ .id }} ' || mas install {{ .id }}  # {{ .name }}
+  mas list | grep -qE '^ *{{ .id }} ' || mas install {{ .id }}  # {{ .name }}
 {{- end }}
 fi
 {{ end -}}
