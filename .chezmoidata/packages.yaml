@@ -68,7 +68,9 @@ ports:
   - neovim
   - nmap
   # - nodejs14   # EOL since 2023
-  # - nodejs24   # fnm installs Node from official binaries; the port is a source V8 build (2026-11-02)
+  # - nodejs24   # fnm installs Node from official binaries; npm12 pulls this port in as a dependency
+  - npm12       # needed for min-release-age; conflicts with npm10
+  - pnpm
   - node_exporter
   # - nvm   # replaced by fnm
   # - openjdk11   # unused since 2025-11 in shell or agent history

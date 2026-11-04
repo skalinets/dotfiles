@@ -5,6 +5,11 @@
 set -euo pipefail
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 
+# npm12 conflicts with npm10, which older installs have active.
+if port -q installed npm10 2>/dev/null | grep -q '(active)'; then
+  sudo port -f deactivate npm10
+fi
+
 sudo port -N install{{ range .ports }} {{ . }}{{ end }}
 
 if command -v mas >/dev/null 2>&1; then
