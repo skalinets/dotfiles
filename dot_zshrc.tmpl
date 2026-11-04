@@ -85,3 +85,6 @@ unset _hc
 {{- end }}
 
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Keep dependency-gate shims first in PATH.
+[ -f ~/.agents/dep-guard/path.zsh ] && source ~/.agents/dep-guard/path.zsh

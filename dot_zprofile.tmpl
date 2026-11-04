@@ -13,3 +13,6 @@ fi
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 [ -d /Applications/Obsidian.app ] && export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
 {{- end }}
+
+# Keep dependency-gate shims first in PATH.
+[ -f ~/.agents/dep-guard/path.zsh ] && source ~/.agents/dep-guard/path.zsh

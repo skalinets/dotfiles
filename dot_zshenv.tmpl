@@ -18,3 +18,6 @@ esac
 export PLANNOTATOR_REMOTE=1
 export PLANNOTATOR_PORT=19432-19441
 {{- end }}
+
+# Keep dependency-gate shims first in PATH.
+[ -f ~/.agents/dep-guard/path.zsh ] && source ~/.agents/dep-guard/path.zsh
